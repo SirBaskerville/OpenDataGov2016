@@ -1,16 +1,39 @@
 
 <?php	
 	if(!isset($estado))
-	{
-		
+	{		
 		//---------------------------------------------------------------------------------------------------------------------
 		echo "<br/><div class='alert alert-success'>";
-		echo '<h4>Total de '.$leyenda.': ';
+		echo '<h4>Totales';
 		 foreach($cantidad_est->result_array() as $row)
 	            {         
 	                //echo $row['contador'];
-	                echo "<button class='btn btn-success'>".$row['contador']."</button>";
+	                echo "<p class='text-center'><span class='label label-success'>Establecimientos: ".$row['contador']."</span>&nbsp;&nbsp;";
 	            }//fin de foreach de cantidad escuelas
+	    //----------------------------------------------        
+	    //CONTEO TFM
+		foreach($alumnos_total->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_alumnos = $row['contador'];
+	            }//fin de foreach de total alumnos
+	    foreach($alumnos_femeninos->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_femeninos = $row['contador'];
+	            }//fin de foreach de total alumnos        
+	    foreach($alumnos_masculinos->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_masculinos = $row['contador'];
+	            }//fin de foreach de total alumnos
+	    echo "<span class='label label-danger'>Total alumnos: ".$total_alumnos."</span>";
+	    echo "&nbsp;&nbsp;";        
+		echo "<span class='label label-warning'>Total femenino: ".$total_femeninos."</span>";
+		echo "&nbsp;&nbsp;";
+		echo "<span class='label label-info'>Total masculino:".$total_masculinos."</span></p>";        
+	            
+	    //----------------------------------------------        
 		echo "</h4></div>";
 		//----------------------------------------------
 		echo form_open('inicio/establecimientos2');
@@ -103,7 +126,7 @@
 			echo form_hidden('estado', 300);
 			echo form_hidden('departamento', $departamento);
 			echo form_hidden('localidad', $localidad);
-			
+			echo form_hidden('escuela', $escuela);
 			
 			
 			echo "<br/><div class='alert alert-info'>";
@@ -119,7 +142,30 @@
 	   echo "<tr><td><b><small>Id:</small></b> ".$row['id']."</td><td><b><small>Cue-anexo:</b></small> ".$row['Cue_Anexo']."</td><td colspan='3' rowspan='1'><b><small>Nombre:</b></small> ".$row['Nombre']."</tr><tr>";
 	   echo "</td><td><b><small>Departamento:</b></small> ".$row['Departamento']."<td><b><small>Regimen:</b></small> ".$row['Regimen']."</td><td><b><small>Jurisdiccion:</b></small> ".$row['Jurisdiccion']."</td><td><b><small>Cod. zona:</b></small> ".$row['Obs']."</td><td><b><small>Localidad:</b></small> ".$row['Localidad']."</td></tr>";
 	            }//fin de foreach de datos de la escuela	    
-		echo "</tobody></table></div><hr/>";
+		echo "</tobody></table></div>";
+		//---------------------------------------------------------------
+		//CONTEO TFM
+		foreach($total->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_alumnos = $row['contador'];
+	            }//fin de foreach de total alumnos
+	    foreach($femeninos->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_femeninos = $row['contador'];
+	            }//fin de foreach de total alumnos        
+	    foreach($masculinos->result_array() as $row)
+	            {         
+	                //echo $row['contador'];
+	                $total_masculinos = $row['contador'];
+	            }//fin de foreach de total alumnos
+	    echo "<p class='text-center'><span class='label label-success'>Total alumnos: ".$total_alumnos."</span>";
+	    echo "&nbsp;&nbsp;";        
+		echo "<span class='label label-warning'>Total femenino: ".$total_femeninos."</span>";
+		echo "&nbsp;&nbsp;";
+		echo "<span class='label label-info'>Total masculino:".$total_masculinos."</span></p>";
+		
 		//---------------------------------------------------------------
 		echo "<br/><div class='alert alert-info'>";
 			echo "<h4>Cursos o divisiones de la ".$escuela.",<br/>de la localidad de ".$localidad."departamento de ".$departamento;
@@ -133,7 +179,7 @@
 	            {
 					echo "<tr><td><b><small><span style='color: red;'>Id:</span></small></b> ".$row['id']."</td>
 					<td><b><small>Cue-anexo:</b></small> ".$row['CUE-ANEXO']."</td>
-					<td><b><small><span style='color: red;'>Curso/Division:</small></b></small>"					
+					<td><b><small><span style='color: red;'>Curso/Division: </small></b>"					
 					.$row['CursoDivisionID']."</td>
 					<td><b><small>Curso:</b></small> ".$row['Curso']."</td></tr>";
 	   echo "<tr><td><b><small>Division:</b></small> ".$row['Division']."</td>
@@ -142,14 +188,14 @@
 	   <td><b><small>Orientacion:</b></small> ".$row['Orientacion']."</td></tr>";
 	   echo "<tr><td><b><small>Modalidad:</b></small> ".$row['Modalidad']."</td>
 	   <td colspan='2' rowspan='1'><b><small>Obs:</b></small> ".$row['obs1']." ".$row['obs2']." ".$row['obs3']." ".$row['obs4']."</td>
-	   <td><button type='submit' class='btn btn-info' name='escuela' value='".$row['CursoDivisionID']."'>ver curso</button></td></tr>";
+	   <td><button type='submit' class='btn btn-info' name='curso_division' value='".$row['CursoDivisionID']."'>ver curso</button></td></tr>";
 	   	   		
 				}//end foreach cursos y divisiones
 				echo "</tobody></table></div><hr/>";
 		if(!isset($row['Curso']))
 		{
 			
-			echo "Sin registros en la base de datos";
+			echo "<p class='text-center'>Sin registros de cursos o divisiones en la base de datos</span>";
 		}		
 		//------------------------------------------
 		echo form_close();		

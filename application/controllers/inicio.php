@@ -35,9 +35,12 @@ class Inicio extends CI_Controller {
 	public function establecimientos()
 	{	
 		//-----------------------------------
-		$data['cantidad_est']	=	$this->opendatagov->contar_establecimientos();
-		$data['lista_deptos']	=	$this->opendatagov->listar_departamentos();
-		$data['leyenda']		=	"establecimientos";		
+		$data['cantidad_est']		=	$this->opendatagov->contar_establecimientos();
+		$data['lista_deptos']		=	$this->opendatagov->listar_departamentos();
+		$data['alumnos_total']		=	$this->opendatagov->alumnos_total_general();
+		$data['alumnos_femeninos']	=	$this->opendatagov->alumnos_total_femenino();
+		$data['alumnos_masculinos']	=	$this->opendatagov->alumnos_total_masculino();
+		$data['leyenda']			=	"establecimientos";		
 		//-----------------------------------
 		$this->load->view('includes/header');
 		$this->load->view('vista_establecimientos', $data);
@@ -95,18 +98,18 @@ class Inicio extends CI_Controller {
 		//-----------------------------------
 		$data['escuelas_localidad']			=	$this->opendatagov->datos_escuela($escuela);
 		$escuela_localidad					=	$this->opendatagov->datos_escuela($escuela);
-		//$data['cantidad_est']				=	$this->opendatagov->contar_establecimientos_departamento3($seleccion_localidad);
-		//$data['listar_localidades']		=	$this->opendatagov->listar_localidades($id_departamento);
-		//$data['leyenda']					=	"establecimientos del departamento";		
+				
 		//-----------------------------------
 		foreach($escuela_localidad->result_array() as $row)
 	            {         
 	               $cue = $row['Cue_Anexo'];
 	            }//fin de foreach de datos de la escuela
-		echo $cue_anexo = substr($cue, 0, -2).'-'.substr($cue, -2);
+		$cue_anexo = substr($cue, 0, -2).'-'.substr($cue, -2);
 		//------------------------------------------------------------
 		$data['cursos_divisiones']			=	$this->opendatagov->datos_cursos($cue_anexo);
-		//$data['alumos_total']				=	$this->opendatagov->alumnos_total($cue_anexo);
+		$data['total']			= $this->opendatagov->alumnos_escuela_total($cue_anexo);
+		$data['femeninos']		= $this->opendatagov->alumnos_escuela_femeninos($cue_anexo);
+		$data['masculinos']		= $this->opendatagov->alumnos_escuela_masculinos($cue_anexo);
 		//------------------------------------------------------------
 	
 		$this->load->view('includes/header');
@@ -117,7 +120,21 @@ class Inicio extends CI_Controller {
 	
 	public function alumnos()
 	{
+		$data['estado'] 		= $this->input->post('estado');
+		$departamento	 		= $this->input->post('departamento');
+		$localidad				= $this->input->post('localidad');
+		$escuela				= $this->input->post('escuela');
 		
+		$data['localidad']		= $this->input->post('localidad');
+		$data['departamento']	= $this->input->post('departamento');
+		$data['escuela']		= $this->input->post('escuela');
+		$curso				= $this->input->post('curso_division');
+		$data['curso']			= $this->input->post('curso_division');
+		//------------------------------------------------
+		$data['total']			= $this->opendatagov->alumnos_total($curso);
+		$data['femeninos']		= $this->opendatagov->alumnos_femeninos($curso);
+		$data['masculinos']		= $this->opendatagov->alumnos_masculinos($curso);
+		$data['listado']		= $this->opendatagov->alumnos_listado($curso);
 		//------------------------------------------------
 		$this->load->view('includes/header');
 		$this->load->view('vista_alumnos', $data);
@@ -127,7 +144,7 @@ class Inicio extends CI_Controller {
 	
 	
 	
-	
+	//-----------------------------------------------------------------
 	public function cursos()
 	{
 		

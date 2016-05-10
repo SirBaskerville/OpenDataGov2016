@@ -84,9 +84,66 @@
 			return $query;			
 		}//fin datos de cue-anexo para escuelas
 		//------------------------------------------------------------------------------------------------------------------------------------
-		
-		
-		
+		function alumnos_total($curso)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where curso = '$curso'");
+			return $query;
+		}// fin conteo de alumnos totales de curso de l aescuela x
+		//-------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_femeninos($curso)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where curso = '$curso' and sexo ='F'");
+			return $query;
+		}// fin conteo de alumnos femeninos de curso de l aescuela x
+		//-------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_masculinos($curso)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where curso = '$curso' and sexo ='M'");
+			return $query;
+		}// fin conteo de alumnos masculinos de curso de l aescuela x
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_listado($curso)
+		{
+			$query = $this->db->query("select * from alumnos where curso = '$curso' order by sexo, fechanac desc");
+			return $query;
+		}//fin funcion listado de alumnos de escuela/curso x
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_escuela_total($escuela)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where cursodivisionid = '$escuela'");
+			return $query;
+		}// fin conteo de alumnos totales de curso de l aescuela x
+		//-------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_escuela_femeninos($escuela)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where cursodivisionid = '$escuela' and sexo ='F'");
+			return $query;
+		}// fin conteo de alumnos femeninos de curso de l aescuela x
+		//-------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_escuela_masculinos($escuela)
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where cursodivisionid = '$escuela' and sexo ='M'");
+			return $query;
+		}// fin conteo de alumnos masculinos de curso de l aescuela x
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_total_general()
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos");
+			return $query;
+		}// fin funcion conteo general de alumnos
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_total_femenino()
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where sexo ='F'");
+			return $query;
+		}// fin funcion conteo general femenino
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		function alumnos_total_masculino()
+		{
+			$query = $this->db->query("select count(id) as contador from alumnos where sexo ='M'");
+			return $query;
+		}// fin funcion conteo general femenino
+		//--------------------------------------------------------------------------------------------------------------------------------------
 		
 		
 	}//fin clase Opendatagov
