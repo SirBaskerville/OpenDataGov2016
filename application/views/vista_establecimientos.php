@@ -1,5 +1,16 @@
+<?php
 
-<?php	
+/////////////////////////////////////////////////////////////
+// Terciario Superior de Informatica UOCRA subsede         //
+// subsede El Sombrero | Grupo TICs INTA EEA Corrientes    //
+// Profesor:                                               //
+// Edwin Aguiar (analista de sistemas)                     //
+//  Version 11 mayo de 2016  EEA CORRIENTES- INTA          //
+//  aguiar.edwin@inta.gob.ar                               //
+//  programado con herramientas libres:                    //
+//  php, mysql, apache, css, js, jquery, bootstrap, html   //
+/////////////////////////////////////////////////////////////
+	
 	if(!isset($estado))
 	{		
 		//---------------------------------------------------------------------------------------------------------------------

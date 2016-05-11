@@ -1,10 +1,10 @@
 <?
 /////////////////////////////////////////////////////////////
-//  SITE: sistema de informacion terminal externa, sistema //
-//  de visualizacion de datos publicos REDGEN del INTA     //
-//  Edwin Aguiar (analista de sistemas -referente de docu- //
-//  mentacion de bancos de germoplasma) TICs CORRIENTES    //
-//  Version 3 Febrero de 2016  EEA CORRIENTES- INTA        //
+// Terciario Superior de Informatica UOCRA subsede         //
+// subsede El Sombrero | Grupo TICs INTA EEA Corrientes    //
+// Profesor:                                               //
+// Edwin Aguiar (analista de sistemas)                     //
+//  Version 11 mayo de 2016  EEA CORRIENTES- INTA          //
 //  aguiar.edwin@inta.gob.ar                               //
 //  programado con herramientas libres:                    //
 //  php, mysql, apache, css, js, jquery, bootstrap, html   //

@@ -1,10 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /////////////////////////////////////////////////////////////
-//  SITE: sistema de informacion terminal externa, sistema //
-//  de visualizacion de datos publicos REDGEN del INTA     //
-//  Edwin Aguiar (analista de sistemas -referente de docu- //
-//  mentacion de bancos de germoplasma) TICs CORRIENTES    //
-//  Version 3 Febrero de 2016  EEA CORRIENTES- INTA        //
+// Terciario Superior de Informatica UOCRA subsede         //
+// subsede El Sombrero | Grupo TICs INTA EEA Corrientes    //
+// Profesor:                                               //
+// Edwin Aguiar (analista de sistemas)                     //
+//  Version 11 mayo de 2016  EEA CORRIENTES- INTA          //
 //  aguiar.edwin@inta.gob.ar                               //
 //  programado con herramientas libres:                    //
 //  php, mysql, apache, css, js, jquery, bootstrap, html   //
@@ -147,6 +147,20 @@
 		function busqueda_directa_escuelas($nombre)
 		{
 			$query = $this->db->query("select * from establecimientos where nombre like '".$nombre."' order by nombre asc");
+			return $query;
+			
+		}// fin funcion busqueda directa [por nombre de escuelas]
+		//---------------------------------------------------------------------------------------------------------------------------------------
+		function busqueda_directa_conteo($nombre)
+		{
+			$query = $this->db->query("select count(*)as contador from establecimientos where nombre like '".$nombre."'");
+			return $query;
+			
+		}// fin funcion busqueda directa [por nombre de escuelas]
+		//---------------------------------------------------------------------------------------------------------------------------------------
+		function busqueda_directa_escuela($cue)
+		{
+			$query = $this->db->query("select * from establecimientos where cue_anexo = '".$cue."' order by nombre asc");
 			return $query;
 			
 		}// fin funcion busqueda directa [por nombre de escuelas]

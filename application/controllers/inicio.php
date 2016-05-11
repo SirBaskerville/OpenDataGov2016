@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /////////////////////////////////////////////////////////////
-//  SITE: sistema de informacion terminal externa, sistema //
-//  de visualizacion de datos publicos REDGEN del INTA     //
-//  Edwin Aguiar (analista de sistemas -referente de docu- //
-//  mentacion de bancos de germoplasma) TICs CORRIENTES    //
-//  Version 3 Febrero de 2016  EEA CORRIENTES- INTA        //
+// Terciario Superior de Informatica UOCRA subsede         //
+// subsede El Sombrero | Grupo TICs INTA EEA Corrientes    //
+// Profesor:                                               //
+// Edwin Aguiar (analista de sistemas)                     //
+//  Version 11 mayo de 2016  EEA CORRIENTES- INTA          //
 //  aguiar.edwin@inta.gob.ar                               //
 //  programado con herramientas libres:                    //
 //  php, mysql, apache, css, js, jquery, bootstrap, html   //
@@ -165,6 +165,7 @@ class Inicio extends CI_Controller {
 		$data['nombre']		=	$this->input->post('nombre');
 		//-----------------------------------
 		$data['escuelas']	=	$this->opendatagov->busqueda_directa_escuelas($nombre);
+		$data['total']		=	$this->opendatagov->busqueda_directa_conteo($nombre);
 		//-----------------------------------
 		$this->load->view('includes/header');
 		$this->load->view('vista_directa',$data);
@@ -175,10 +176,15 @@ class Inicio extends CI_Controller {
 	public function directa3()
 	{	
 		//-----------------------------------
-		echo $cue				= 	$this->input->post('cue');
-		
+		$cue				= 	$this->input->post('cue');
+		//$data['nombre']		=	$this->input->post('nombre');
+		$data['escuela']	=	$this->opendatagov->busqueda_directa_escuela($cue);
+		$data['estado']		=	$this->input->post('estado');
 		//-----------------------------------
-		//$data['escuela']	=	$this->opendatagov->busqueda_directa_escuela($cue);
+		$cue_anexo = substr($cue, 0, -2).'-'.substr($cue, -2);
+		//-----------------------------------
+		$data['escuela']	=	$this->opendatagov->busqueda_directa_escuela($cue);
+		$data['cursos']		=	$this->opendatagov->datos_cursos($cue_anexo);
 		//-----------------------------------
 		$this->load->view('includes/header');
 		$this->load->view('vista_directa',$data);
