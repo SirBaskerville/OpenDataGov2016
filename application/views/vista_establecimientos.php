@@ -76,7 +76,7 @@
 	            }//fin de foreach nombre departamento
 	    //--------------------------------------------	            
 		echo "<h3>Localidades/parajes de ".$departamentos."</h3></div>";			// baner interior de localidades de departamento
-		echo "<div class='table‐responsive'>";				
+		echo "<div class='table-responsive'>";				
 		echo "<table class='table table-striped'><tbody>";							// tabla de columnas localidades / botones /
 		//--------------------------------------------
 		$i	= 1;
@@ -105,7 +105,7 @@
 	    echo "</h4></div>";
 	    //--------------------------------------------
 	   // echo "<h3>Localidades/parajes de ".$departamentos."</h3></div>";			// baner interior de escuelas en parajes
-		echo "<div class='table_responsive'>";				
+		echo "<div class='table-responsive'>";				
 		echo "<table class='table table-condensed table-striped'><tbody>";							// tabla de columnas escuelas / botones /		
 		echo "<tr class='success'><td> Registro</td><td>Codigo Unico Escolar</td><td>Establecimiento</td><td>Visualizar metricas</td></tr>";	    
 	    //--------------------------------------------
@@ -133,7 +133,7 @@
 			echo "<h4>Escuelas de la localidad de ".$localidad.", departamento de ".$departamento."<br/>";
 			echo $escuela."<h4></div>";
 		//---------------------------deplegar datos de escuela
-		echo "<div class='table_responsive'>";				
+		echo "<div class='table-responsive'>";				
 		echo "<table class='table table-condensed table-striped'><tbody>";							// tabla de columnas escuelas / botones /		
 		    
 	    //---------------------------------------------------------------
@@ -171,7 +171,7 @@
 			echo "<h4>Cursos o divisiones de la ".$escuela.",<br/>de la localidad de ".$localidad."departamento de ".$departamento;
 			echo "<h4></div>";
 		//---------------------------deplegar datos de cursos y divisiones
-		echo "<div class='table_responsive'>";				
+		echo "<div class='table-responsive'>";				
 		echo "<table class='table table-condensed table-striped'><tbody>";	
 			
 		//---------------------------------------------------------------

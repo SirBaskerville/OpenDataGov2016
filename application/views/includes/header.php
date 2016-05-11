@@ -32,7 +32,16 @@
 				        placement: 'rigth'
 				    });
 				});
-		</script>     	
+		</script> 
+		<script type="text/javascript">
+				$(function () {
+				    $('#ayuda2').popover({
+				        title: 'Ayuda BUSQUEDA DIRECTA',
+				        content: 'Nombre de la escuela o instituto, desplegara una lista de seleccion por departamento y localidad.',
+				        placement: 'rigth'
+				    });
+				});
+		</script>    	
 <!------------------------------------------------------------------------------------------------------------------------------------------> 	
 	</head>
     <body>
@@ -46,7 +55,7 @@
         <ul class="nav navbar-nav">
 		  		  
 					<li><a href="<?php echo site_url('inicio/index')?>" title="Inicio"><b>Inicio</b></a></li>
-					<li><a href="<?php echo site_url('inicio/establecimientos')?>" title="Busqueda secuencial en pasos"><b>Busqueda Secuancial</b></a></li>
+					<li><a href="<?php echo site_url('inicio/establecimientos')?>" title="Busqueda secuencial en pasos"><b>Busqueda Secuencial</b></a></li>
 					<li><a href="<?php echo site_url('inicio/directa')?>" title="Busqueda directa"><b>Busqueda Directa</b></a></li>
 					<!---li><a href="<?php echo site_url('inicio/contact')?>" title="Vias de comunicacion"><b>Contactos</b></a></li--->
 		            <li><a href="http://mcyp.corrientes.gob.ar" title="Portal principal INTA"><b>Ministerio</b></a></li>

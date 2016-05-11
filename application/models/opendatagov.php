@@ -144,6 +144,11 @@
 			return $query;
 		}// fin funcion conteo general femenino
 		//--------------------------------------------------------------------------------------------------------------------------------------
-		
+		function busqueda_directa_escuelas($nombre)
+		{
+			$query = $this->db->query("select * from establecimientos where nombre like '".$nombre."' order by nombre asc");
+			return $query;
+			
+		}// fin funcion busqueda directa [por nombre de escuelas]
 		
 	}//fin clase Opendatagov

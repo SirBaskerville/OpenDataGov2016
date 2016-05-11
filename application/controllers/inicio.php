@@ -145,15 +145,46 @@ class Inicio extends CI_Controller {
 	
 	
 	//-----------------------------------------------------------------
-	public function cursos()
-	{
+	public function directa()
+	{	
+		//-----------------------------------
 		
 		//-----------------------------------
 		$this->load->view('includes/header');
-		$this->load->view('vista_cursos');
+		$this->load->view('vista_directa');
 		$this->load->view('includes/footer');
 				
-	}// fin funcion establecimientos
+	}// fin funcion busqueda directa general
+	//-----------------------------------------------------------------
+	public function directa2()
+	{	
+		//-----------------------------------
+		$nombre		=	"%".$this->input->post('nombre')."%";
+		$estado		=	$this->input->post('estado');
+		$data['estado']		=	$this->input->post('estado');
+		$data['nombre']		=	$this->input->post('nombre');
+		//-----------------------------------
+		$data['escuelas']	=	$this->opendatagov->busqueda_directa_escuelas($nombre);
+		//-----------------------------------
+		$this->load->view('includes/header');
+		$this->load->view('vista_directa',$data);
+		$this->load->view('includes/footer');
+				
+	}// fin funcion busqueda directa nombres escuela
+	//-----------------------------------------------------------------
+	public function directa3()
+	{	
+		//-----------------------------------
+		echo $cue				= 	$this->input->post('cue');
+		
+		//-----------------------------------
+		//$data['escuela']	=	$this->opendatagov->busqueda_directa_escuela($cue);
+		//-----------------------------------
+		$this->load->view('includes/header');
+		$this->load->view('vista_directa',$data);
+		$this->load->view('includes/footer');
+				
+	}// fin funcion busqueda directa particular
 	
 	
 	
